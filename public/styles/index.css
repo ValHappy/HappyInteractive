@@ -1,0 +1,21 @@
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(252.44deg, #42000F 0%, #02060F 12.84%, #02060F 84.45%, #42000F 100%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 0.8vw;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: 0.1em;
+  color: white;
+}
+/*# sourceMappingURL=index.css.map */
