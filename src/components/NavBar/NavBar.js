@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -29,6 +28,7 @@ function NavBar(props) {
 const useStyles = makeStyles({
     nav: {
         margin: '1.5em',
+        marginRight: '2.5em',
         padding: '0.1em',
         width: '25%',
         borderRadius: '5em',
@@ -39,14 +39,22 @@ const theme = createMuiTheme({
     overrides: {
         MuiBottomNavigationAction: {
             root: {
-                fontSize: '0.8vw',
-                fontFamily: 'Quicksand',
-                fontWeight: '400',
-                letterSpacing: '0.1em',
 
                 '&$selected': {
                     color: colors.pink,
                 },
+            },
+
+            label: {
+                fontSize: '0.8vw',
+                fontFamily: 'Quicksand,sans-serif',
+                fontWeight: '400',
+                letterSpacing: '0.1em',
+            }
+        },
+        MuiSvgIcon: {
+            root: {
+                fontSize: '1.5em',
             },
         },
     },
