@@ -8,9 +8,10 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 //My containers
 import Home from '../Home/Home';
 import NavBar from '../../components/NavBar/NavBar';
-import Project from '../Project/Project';
+import Projects from '../Projects/Projects';
 import About from '../About/About';
 import Contact from '../Contact/Contact';
+import Project from '../../components/Project';
 
 import logo from '../../assets/logo.svg'
 
@@ -29,7 +30,8 @@ function App() {
       </div>
       <div className={classes.app}>
         <Route path="/" exact component={Home} />
-        <Route path="/projects" component={Project} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/project" component={Project} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
       </div>
