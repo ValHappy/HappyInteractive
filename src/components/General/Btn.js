@@ -8,11 +8,11 @@ import colors from '../../config/colors';
 const btnWidth = '15%';
 const btnHeigth = 45;
 
-function Btn({onClick,text, col = colors.pink}) {
+function Btn({onClick,text, value, col = colors.pink}) {
     const classes = useStyle();
 
     return (
-        <Button onClick={onClick} className={classes.btn} variant="outlined" style={{background: col}}> {text} </Button>
+        <Button onClick={onClick} className={classes.btn} variant="outlined" value={value} style={{background: col}}> {text} </Button>
     );
 }
 

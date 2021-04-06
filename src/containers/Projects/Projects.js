@@ -1,49 +1,53 @@
-import React, { useState } from "react";
+import React from "react";
 import { withRouter } from 'react-router';
-import { makeStyles } from '@material-ui/core';
-import Carousel from "react-elastic-carousel";
-import Item from '../../components/General/Item';
+import { Button, createMuiTheme, makeStyles, ThemeProvider } from '@material-ui/core';
 import colors from '../../config/colors';
-import myArrow from "../../components/General/myArrow";
-import "./styles.css";
+import { ChevronLeftRounded, ChevronRightRounded } from "@material-ui/icons";
 
-
-const breakPoints = [
-    { width: 1, itemsToShow: 1, itemsToScroll: 1 },
-    { width: 550, itemsToShow: 2, itemsToScroll: 1 },
-    { width: 768, itemsToShow: 3, itemsToScroll: 1 },
-    { width: 1200, itemsToShow: 4, itemsToScroll: 1 }
-];
-
-
-function Projects() {
+function Projects(props) {
     const classes = useStyle();
-    const [items, setItems] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
+    
+    function handleClick(value, newValue) {
+        props.history.push('/proyectos/' + newValue);
+        console.log(value + '=' + newValue);
+    }
 
+    const handleNext = () => {
+        console.log("Next");
+    };
 
+    const handleBack = () => {
+        console.log("Previous");
+    };
 
     return (
-        <div className={classes.container} >
-            <div className={classes.textContent}>
-                <h1 className={classes.title + " animate__animated animate__slideInDown"}>Here are some of my projects</h1>
-                <h2 className={classes.titleProject + " animate__animated animate__slideInUp"}>Interface Design</h2>
-            </div>
-            <div className={classes.content}>
-                <div className={classes.projects}>
-                    <Carousel
-                        style={{ height: '100%'}}
-                        renderArrow={myArrow}
-                        enableAutoPlay autoPlaySpeed={2400}
-                        focusOnSelect={true}
-                        breakPoints={breakPoints}>
-                        {items.map((item) => (
-                            <Item key={item}>{item}</Item>
-                        ))}
-                    </Carousel>
-
+        <ThemeProvider theme={theme}>
+            <div className={classes.container} >
+                <div className={classes.textContent}>
+                    <h1 className={classes.title + " animate__animated animate__slideInDown"}>Here are some of my projects</h1>
+                    <h2 className={classes.titleProject + " animate__animated animate__slideInUp"}>Interface Design</h2>
+                </div>
+                <div className={classes.content}>
+                    <div className={classes.projects}>
+                        <div onClick={handleClick} className={classes.project + " animate__animated animate__zoomIn"} />
+                        <div className={classes.project + " animate__animated animate__zoomIn"} />
+                        <div className={classes.project + " animate__animated animate__zoomIn"} />
+                    </div>
+                    <div className={classes.arrows}>
+                        <Button
+                            className={classes.btn}
+                            variant="contained"
+                            onClick={handleBack}
+                        ><ChevronLeftRounded /></Button>
+                        <Button
+                            className={classes.btn}
+                            variant="contained"
+                            onClick={handleNext}
+                        ><ChevronRightRounded /></Button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ThemeProvider>
     );
 }
 
@@ -52,7 +56,7 @@ const useStyle = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         width: '90%',
-        height: '100%',
+        height: '90vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -61,12 +65,11 @@ const useStyle = makeStyles((theme) => ({
         margin: '1.5%',
         padding: 0,
         width: '35%',
-        height: '100%',
+        height: '90%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'flex-end',
-        background: colors.orange,
     },
     title: {
         fontFamily: 'Julius Sans One',
@@ -85,7 +88,7 @@ const useStyle = makeStyles((theme) => ({
         margin: '1.5%',
         padding: 0,
         width: '60%',
-        height: '100%',
+        height: '90%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -95,11 +98,10 @@ const useStyle = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         width: '100%',
-        height: '85%',
+        height: '90%',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        background: colors.orangeLight,
     },
     project: {
         margin: 0,
@@ -107,6 +109,31 @@ const useStyle = makeStyles((theme) => ({
         height: '90%',
         background: colors.white,
     },
+    arrows: {
+        margin: 0,
+        padding: 0,
+        height: '2%',
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+    },
+    btn: {
+        marginRight: '0.5em',
+        padding: '0.4em',
+    },
 }));
+
+const theme = createMuiTheme({
+    overrides: {
+        MuiButton: {
+            contained: {
+                backgroundColor: colors.pink,
+                '&:hover': {
+                    backgroundColor: colors.pinkDark,
+                },
+            },
+        },
+    },
+});
 
 export default withRouter(Projects);

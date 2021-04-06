@@ -1,15 +1,22 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { withRouter } from 'react-router';
-import clapperboard from '../../assets/About/Clapperboard.svg'
-import camera from '../../assets/About/Camera.svg'
-import hand from '../../assets/About/Hand.svg'
-import pen from '../../assets/About/Pen.svg'
-import photo from '../../assets/About/Photo.svg'
+import clapperboard from '../../assets/About/Clapperboard.svg';
+import camera from '../../assets/About/Camera.svg';
+import hand from '../../assets/About/Hand.svg';
+import pen from '../../assets/About/Pen.svg';
+import photo from '../../assets/About/Photo.svg';
+import Btn from '../../components/General/Btn';
 
 
-function About() {
+function About(props) {
     const classes = useStyle();
+
+    function handleClick(value, newValue) {
+        props.history.push('/about/' + newValue);
+        console.log(value + '=' + newValue);
+    }
+
     return (
         <div className={classes.container}>
             <div className={classes.content}>
@@ -35,6 +42,9 @@ function About() {
                         <label className={classes.label}>Photography</label>
                     </div>
                 </div>
+                <div className={classes.btnContent}>
+                    <Btn onClick={handleClick} value="skills" text="View more" />
+                </div>
             </div>
             <img className={classes.img + " animate__animated animate__fadeIn"} src={photo} alt="Valentina" />
         </div>
@@ -46,7 +56,7 @@ const useStyle = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         width: '100%',
-        height: '100%',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'flex-end',
@@ -65,7 +75,7 @@ const useStyle = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         width: '75%',
-        height: '50%',
+        height: '35%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -90,7 +100,7 @@ const useStyle = makeStyles((theme) => ({
         margin: 0,
         padding: 0,
         width: '75%',
-        height: '20%',
+        height: '16%',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'flex-end',
@@ -113,6 +123,16 @@ const useStyle = makeStyles((theme) => ({
         fontSize: '1.1vw',
         letterSpacing: '0.05em',
         textAlign: 'center',
+    },
+    btnContent: {
+        margin: 0,
+        padding: 0,
+        width: '100%',
+        height: '20%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     img: {
         width: '40%',

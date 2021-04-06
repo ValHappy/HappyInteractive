@@ -10,6 +10,7 @@ import Home from '../Home/Home';
 import NavBar from '../../components/NavBar/NavBar';
 import Projects from '../Projects/Projects';
 import About from '../About/About';
+import Skills from '../Skills/Skills';
 import Contact from '../Contact/Contact';
 import Project from '../../components/Project';
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/projects" component={Projects} />
         <Route path="/project" component={Project} />
         <Route path="/about" component={About} />
+        <Route path="/skills" component={Skills} />
         <Route path="/contact" component={Contact} />
       </div>
     </Router>
@@ -48,7 +50,7 @@ const useStyle = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    position: 'sticky',
+    position: 'fixed',
     top: '1%',
   },
   logo: {
@@ -59,10 +61,7 @@ const useStyle = makeStyles((theme) => ({
     margin: 0,
     padding: 0,
     width: '100%',
-    height: '85vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: '85%',
   },
 }));
 
