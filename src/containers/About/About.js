@@ -9,12 +9,11 @@ import photo from '../../assets/About/Photo.svg';
 import Btn from '../../components/General/Btn';
 
 
-function About(props) {
+function About({history}) {
     const classes = useStyle();
 
-    function handleClick(value, newValue) {
-        props.history.push('/about/' + newValue);
-        console.log(value + '=' + newValue);
+    function handleClick() {
+        history.push('/skills');
     }
 
     return (

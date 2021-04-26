@@ -15,6 +15,7 @@ import Contact from '../Contact/Contact';
 import Project from '../../components/Project';
 
 import logo from '../../assets/logo.svg'
+import Provider from './Provider';
 
 function App() {
   const classes = useStyle();
@@ -25,18 +26,20 @@ function App() {
 
   return (
     <Router>
-      <div className={classes.nav}>
-        <img src={logo} className={classes.logo} alt="Logo" onClick={scrollToTop} />
-        <NavBar />
-      </div>
-      <div className={classes.app}>
-        <Route path="/" exact component={Home} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/project" component={Project} />
-        <Route path="/about" component={About} />
-        <Route path="/skills" component={Skills} />
-        <Route path="/contact" component={Contact} />
-      </div>
+      <Provider>
+        <div className={classes.nav}>
+          <img src={logo} className={classes.logo} alt="Logo" onClick={scrollToTop} />
+          <NavBar />
+        </div>
+        <div className={classes.app}>
+          <Route path="/" exact component={Home} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/project" component={Project} />
+          <Route path="/about" component={About} />
+          <Route path="/skills" component={Skills} />
+          <Route path="/contact" component={Contact} />
+        </div>
+      </Provider>
     </Router>
   );
 }

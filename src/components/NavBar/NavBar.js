@@ -6,16 +6,16 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { AlternateEmailRounded, AppsRounded, HomeRounded, PersonRounded } from '@material-ui/icons';
 import colors from '../../config/colors';
 
-function NavBar(props) {
+function NavBar({location, history}) {
     const classes = useStyles();
 
     function handleChange(event, newValue) {
-        props.history.push(newValue);
+        history.push(newValue);
     }
 
     return (
         <ThemeProvider theme={theme}>
-            <BottomNavigation value={props.location.pathname} onChange={handleChange} className={classes.nav}>
+            <BottomNavigation value={location.pathname} onChange={handleChange} className={classes.nav}>
                 <BottomNavigationAction label="Home" value="/" icon={<HomeRounded />} />
                 <BottomNavigationAction label="Projects" value="/projects" icon={<AppsRounded />} />
                 <BottomNavigationAction label="About me" value="/about" icon={<PersonRounded />} />
